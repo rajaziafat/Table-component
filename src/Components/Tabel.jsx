@@ -80,7 +80,7 @@ function Table() {
         <div className='overflow-x-auto overflow-y-auto '>
             <div className="overflow-x-auto shadow-md sm:rounded-lg">
                 <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
-                    <thead className="text-xs text-white uppercase bg-[#444]">
+                    <thead className="text-xs text-white  bg-[#444]">
                         {headerGroups.map(headerGroup => (
                             <tr  {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
@@ -111,7 +111,7 @@ function Table() {
                             {headerGroups.map(headerGroup => (
                                 <React.Fragment key={headerGroup.id}>
                                     {headerGroup.headers.map(column => (
-                                        <th key={column.id} className="px-2 py-3">
+                                        <th key={column.id} className="px-2 py-2">
                                             <div>{column.render('Filter')}</div>
                                         </th>
                                     ))}
@@ -125,7 +125,7 @@ function Table() {
                             return (
                                 <tr {...row.getRowProps()} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
                                     {row.cells.map(cell => {
-                                        return <td {...cell.getCellProps()} className="px-6 py-4">{cell.render('Cell')}</td>;
+                                        return <td {...cell.getCellProps()} className="px-6 py-2">{cell.render('Cell')}</td>;
                                     })}
                                 </tr>
                             );

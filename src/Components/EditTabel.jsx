@@ -82,7 +82,7 @@ function EditTabel({ onSaveClick }) {
                 </div>
                 <div className="overflow-x-auto shadow-md sm:rounded-lg">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
-                        <thead className="text-xs text-white  bg-[#444]">
+                        <thead className="text-xs text-white  bg-[#3c3c3c]">
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
@@ -122,7 +122,7 @@ function EditTabel({ onSaveClick }) {
                             {page.map((row, rowIndex) => {
                                 prepareRow(row);
                                 return (
-                                    <tr {...row.getRowProps()} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
+                                    <tr {...row.getRowProps()} className="bg-[#444] border-b hover:bg-[#555]">
                                         {row.cells.map(cell => (
                                             <td {...cell.getCellProps()} className="px-6 py-2">
                                                 <input

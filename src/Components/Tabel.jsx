@@ -86,7 +86,7 @@ function Table({ onEditClick }) {
                         Edit
                     </button>
                 </div>
-                <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-b scrollbar-track-gray-200 shadow-md sm:rounded-lg">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
                         <thead className="text-xs text-white  bg-[#444]">
                             {headerGroups.map(headerGroup => (

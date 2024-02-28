@@ -4,9 +4,9 @@ import { useTable, usePagination, useSortBy } from 'react-table';
 import { FaAngleDown, FaAngleUp, FaArrowsAltV } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-
-function Table({ onEditClick }) {
+function EditTabel({ onSaveClick }) {
     const [searchTerms, setSearchTerms] = useState({});
+    const [tableData, setTableData] = useState(data);
     const inputRefs = useRef({});
 
     const columns = useMemo(
@@ -40,15 +40,6 @@ function Table({ onEditClick }) {
             }
         });
     }, [searchTerms]);
-    const filteredData = useMemo(() => {
-        return data.filter(row => {
-            return Object.keys(row).every(key => {
-                const searchTerm = searchTerms[key];
-                if (!searchTerm) return true;
-                return String(row[key]).toLowerCase().includes(searchTerm.toLowerCase());
-            });
-        });
-    }, [data, searchTerms]);
 
     const {
         getTableProps,
@@ -68,22 +59,25 @@ function Table({ onEditClick }) {
     } = useTable(
         {
             columns,
-            data: filteredData,
+            data: tableData,
             initialState: { pageIndex: 0, pageSize: 10 },
         },
         useSortBy, // Place useSortBy first
         usePagination // Then place usePagination
     );
 
+    const handleCellValueChange = (rowIndex, columnId, value) => {
+        const newData = [...tableData];
+        newData[rowIndex][columnId] = value;
+        setTableData(newData);
+    };
 
     return (
         <>
             <div className='overflow-x-auto overflow-y-auto '>
-
-                <div className='flex justify-end pb-4 ' onClick={onEditClick}>
-
+                <div className='flex justify-end pb-4 ' onClick={onSaveClick}>
                     <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
-                        Edit
+                        Save
                     </button>
                 </div>
                 <div className="overflow-x-auto shadow-md sm:rounded-lg">
@@ -109,8 +103,6 @@ function Table({ onEditClick }) {
                                             </div>
                                             <div>{column.canFilter ? column.render('Filter') : null}</div>
                                         </th>
-
-
                                     ))}
                                 </tr>
                             ))}
@@ -127,13 +119,20 @@ function Table({ onEditClick }) {
                             </tr>
                         </thead>
                         <tbody {...getTableBodyProps()}>
-                            {page.map(row => {
+                            {page.map((row, rowIndex) => {
                                 prepareRow(row);
                                 return (
                                     <tr {...row.getRowProps()} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
-                                        {row.cells.map(cell => {
-                                            return <td {...cell.getCellProps()} className="px-6 py-2">{cell.render('Cell')}</td>;
-                                        })}
+                                        {row.cells.map(cell => (
+                                            <td {...cell.getCellProps()} className="px-6 py-2">
+                                                <input
+                                                    type="text"
+                                                    value={cell.value}
+                                                    onChange={e => handleCellValueChange(rowIndex, cell.column.id, e.target.value)}
+                                                    className="bg-transparent border-none outline-none text-white w-full w-24"
+                                                />
+                                            </td>
+                                        ))}
                                     </tr>
                                 );
                             })}
@@ -142,16 +141,13 @@ function Table({ onEditClick }) {
                 </div>
                 <div className="pagination flex items-center justify-end mt-4">
                     <div className="flex items-center text-white">
-
                         <button
                             onClick={() => previousPage()}
                             disabled={!canPreviousPage}
                             className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
                         >
                             <IoIosArrowBack />
-
                         </button>
-
                         <span className="mr-4">
                             Page{' '}
                             <strong>
@@ -164,12 +160,9 @@ function Table({ onEditClick }) {
                             className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
                         >
                             <IoIosArrowForward />
-
                         </button>
-
                     </div>
                     <div>
-
                         <span className='text-white'>
                             | Jump to page:{' '}
                             <input
@@ -184,16 +177,10 @@ function Table({ onEditClick }) {
                             />
                         </span>
                     </div>
-
                 </div>
             </div>
-
-
-
-
-
         </>
     );
 }
 
-export default Table;
+export default EditTabel;

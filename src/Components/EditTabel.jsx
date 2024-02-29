@@ -129,7 +129,7 @@ function EditTabel({ onSaveClick }) {
                                                     type="text"
                                                     value={cell.value}
                                                     onChange={e => handleCellValueChange(rowIndex, cell.column.id, e.target.value)}
-                                                    className=" bg-[#3c3c3c] py-1 px-2 border-none outline-none text-white  w-24"
+                                                    className=" bg-[#3c3c3c]  px-2 border-none outline-none text-white  w-24"
                                                 />
                                             </td>
                                         ))}
@@ -180,7 +180,7 @@ function EditTabel({ onSaveClick }) {
                 </div> */}
 
                 <div className="w-full mt-10 h-4 mb-4  rounded-full bg-[#3c3c3c]">
-                    <div className="h-4 w-28 bg-[#22c55e] rounded-full " ></div>
+                    <div className="h-4 w-full bg-[#22c55e] rounded-full " ></div>
                 </div>
             </div>
         </>

@@ -190,7 +190,7 @@ function Table({ onEditClick }) {
 
 
                 <div className="w-full mt-10 h-4 mb-4  rounded-full bg-[#3c3c3c]">
-                    <div className="h-4 w-28 bg-[#22c55e] rounded-full " ></div>
+                    <div className="h-4 w-full bg-[#22c55e] rounded-full " ></div>
                 </div>
             </div>
 

@@ -23,6 +23,7 @@
   /* WebKit (Chrome, Safari, etc.) */
   ::-webkit-scrollbar {
     width: 1em;
+    height: 1em; /* Added to ensure same size on Android */
   }
 
   ::-webkit-scrollbar-track {

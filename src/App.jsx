@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <div className='flex justify-center items-center h-screen px-12'>
+    <div className='  px-12 py-32'>
       {isEditing ? (
         <EditTabel onSaveClick={handleSaveClick} />
       ) : (

@@ -78,15 +78,17 @@ function Table({ onEditClick }) {
 
     return (
         <>
-            <div className='overflow-x-auto overflow-y-auto '>
 
-                <div className='flex justify-end pb-4 ' onClick={onEditClick}>
+            <div className='flex justify-end pb-4 ' onClick={onEditClick}>
 
-                    <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
-                        Edit
-                    </button>
-                </div>
-                <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-b scrollbar-track-gray-200 shadow-md sm:rounded-lg">
+                <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
+                    Edit
+                </button>
+            </div>
+            <div className='overflow-y-auto '>
+
+
+                <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
                         <thead className="text-xs text-white  bg-[#444]">
                             {headerGroups.map(headerGroup => (
@@ -126,17 +128,14 @@ function Table({ onEditClick }) {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody {...getTableBodyProps()}>
-                            {page.map(row => {
-                                prepareRow(row);
-                                return (
-                                    <tr {...row.getRowProps()} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
-                                        {row.cells.map(cell => {
-                                            return <td {...cell.getCellProps()} className="px-6 py-2">{cell.render('Cell')}</td>;
-                                        })}
-                                    </tr>
-                                );
-                            })}
+                        <tbody>
+                            {filteredData.map((row, rowIndex) => (
+                                <tr key={rowIndex} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
+                                    {Object.values(row).map((cell, cellIndex) => (
+                                        <td key={cellIndex} className="px-6 py-2">{cell}</td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
@@ -189,7 +188,7 @@ function Table({ onEditClick }) {
 
 
 
-         
+
             </div>
 
 

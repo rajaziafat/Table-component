@@ -74,14 +74,15 @@ function EditTabel({ onSaveClick }) {
 
     return (
         <>
-            <div className='overflow-x-auto overflow-y-auto '>
-                <div className='flex justify-end pb-4 ' onClick={onSaveClick}>
+        <div className='flex justify-end pb-4 ' onClick={onSaveClick}>
                     <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
                         Save
                     </button>
                 </div>
-                <div className="overflow-x-auto shadow-md sm:rounded-lg">
-                    <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
+            <div className='overflow-y-auto '>
+                
+                <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
+                    <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white ">
                         <thead className="text-xs text-white  bg-[#2c2c2c]">
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
@@ -118,66 +119,28 @@ function EditTabel({ onSaveClick }) {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody {...getTableBodyProps()}>
-                            {page.map((row, rowIndex) => {
-                                prepareRow(row);
-                                return (
-                                    <tr {...row.getRowProps()} className="bg-[#444] border-b hover:bg-[#555]">
-                                        {row.cells.map(cell => (
-                                            <td {...cell.getCellProps()} className="px-6 py-2">
-                                                <input
-                                                    type="text"
-                                                    value={cell.value}
-                                                    onChange={e => handleCellValueChange(rowIndex, cell.column.id, e.target.value)}
-                                                    className=" bg-[#3c3c3c]  px-2 border-none outline-none text-white  w-24"
-                                                />
-                                            </td>
-                                        ))}
-                                    </tr>
-                                );
-                            })}
+                        <tbody>
+                            {tableData.map((row, rowIndex) => (
+                                <tr key={rowIndex} className="bg-[#444] border-b hover:bg-[#555]">
+                                    {columns.map(column => (
+                                        <td key={column.accessor} className="px-6 py-2">
+                                            <input
+                                                type="text"
+                                                value={row[column.accessor]}
+                                                onChange={e => handleCellValueChange(rowIndex, column.accessor, e.target.value)}
+                                                className="bg-[#3c3c3c] px-2 border-none outline-none text-white w-24"
+                                            />
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
+
+
+                        
                     </table>
                 </div>
-                {/* <div className="pagination flex items-center justify-end mt-4">
-                    <div className="flex items-center text-white">
-                        <button
-                            onClick={() => previousPage()}
-                            disabled={!canPreviousPage}
-                            className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
-                        >
-                            <IoIosArrowBack />
-                        </button>
-                        <span className="mr-4">
-                            Page{' '}
-                            <strong>
-                                {pageIndex + 1} of {pageOptions.length}
-                            </strong>
-                        </span>
-                        <button
-                            onClick={() => nextPage()}
-                            disabled={!canNextPage}
-                            className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
-                        >
-                            <IoIosArrowForward />
-                        </button>
-                    </div>
-                    <div>
-                        <span className='text-white'>
-                            | Jump to page:{' '}
-                            <input
-                                type="number"
-                                defaultValue={pageIndex + 1}
-                                onChange={e => {
-                                    const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                                    gotoPage(page);
-                                }}
-                                className="px-2 py-1 rounded bg-[#444] border border-gray-300 focus:outline-none"
-                                style={{ width: '100px' }}
-                            />
-                        </span>
-                    </div>
-                </div> */}
+               
 
                
             </div>

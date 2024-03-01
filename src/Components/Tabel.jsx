@@ -85,7 +85,7 @@ function Table({ onEditClick }) {
                     Edit
                 </button>
             </div>
-            <div className='overflow-y-auto '>
+            <div className='overflow-y-auto  overflow-x-auto'>
 
 
                 <div className="  shadow-md sm:rounded-lg w-full h-[600px]">

@@ -79,7 +79,7 @@ function EditTabel({ onSaveClick }) {
                         Save
                     </button>
                 </div>
-            <div className='overflow-y-auto '>
+            <div className='overflow-y-auto  overflow-x-auto'>
                 
                 <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white ">

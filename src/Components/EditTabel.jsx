@@ -83,7 +83,7 @@ function EditTabel({ onSaveClick }) {
                 
                 <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white ">
-                        <thead className="text-xs text-white  bg-[#2c2c2c]">
+                        <thead className="text-xs text-white  bg-[#2c2c2c] sticky top-0">
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (

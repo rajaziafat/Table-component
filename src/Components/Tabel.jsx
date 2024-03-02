@@ -90,7 +90,7 @@ function Table({ onEditClick }) {
 
                 <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white">
-                        <thead className="text-xs text-white  bg-[#444]">
+                        <thead className="text-xs text-white  bg-[#444] sticky top-0">
                             {headerGroups.map(headerGroup => (
                                 <tr  {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
@@ -128,7 +128,7 @@ function Table({ onEditClick }) {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className=''>
                             {filteredData.map((row, rowIndex) => (
                                 <tr key={rowIndex} className="bg-[#2c2c2c] border-b hover:bg-[#555]">
                                     {Object.values(row).map((cell, cellIndex) => (
@@ -139,55 +139,7 @@ function Table({ onEditClick }) {
                         </tbody>
                     </table>
                 </div>
-                {/* <div className="pagination flex items-center justify-end mt-4">
-                    <div className="flex items-center text-white">
-
-                        <button
-                            onClick={() => previousPage()}
-                            disabled={!canPreviousPage}
-                            className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
-                        >
-                            <IoIosArrowBack />
-
-                        </button>
-
-                        <span className="mr-4">
-                            Page{' '}
-                            <strong>
-                                {pageIndex + 1} of {pageOptions.length}
-                            </strong>
-                        </span>
-                        <button
-                            onClick={() => nextPage()}
-                            disabled={!canNextPage}
-                            className="px-3 py-1 mr-2 bg-[#22c55e] text-white rounded"
-                        >
-                            <IoIosArrowForward />
-
-                        </button>
-
-                    </div>
-                    <div>
-
-                        <span className='text-white'>
-                            | Jump to page:{' '}
-                            <input
-                                type="number"
-                                defaultValue={pageIndex + 1}
-                                onChange={e => {
-                                    const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                                    gotoPage(page);
-                                }}
-                                className="px-2 py-1 rounded bg-[#444] border border-gray-300 focus:outline-none"
-                                style={{ width: '100px' }}
-                            />
-                        </span>
-                    </div>
-
-                </div> */}
-
-
-
+              
 
             </div>
 

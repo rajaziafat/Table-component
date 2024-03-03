@@ -4,7 +4,7 @@
 }
 /* WebKit (Chrome, Safari, etc.) */
 ::-webkit-scrollbar {
-  width: 0.2em;
+  width: 0em;
 }
 
 ::-webkit-scrollbar-track {
@@ -22,8 +22,8 @@
 @media (max-width: 767px) {
   /* WebKit (Chrome, Safari, etc.) */
   ::-webkit-scrollbar {
-    width: 0.2em;
-    height: 0.2em; /* Added to ensure same size on Android */
+    width: 0em;
+    height: 0em; /* Added to ensure same size on Android */
   }
 
   ::-webkit-scrollbar-track {

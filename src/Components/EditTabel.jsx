@@ -23,7 +23,7 @@ function EditTabel({ onSaveClick }) {
                             setSearchTerms(newSearchTerms);
                         }}
                         placeholder={`Search ${key}`}
-                        className='bg-[#555] py-2 px-2 w-32 focus:outline-none font-[100]'
+                        className={`bg-[#555] input-with-text py-2 px-2 w-32 focus:outline-none font-[100] ${searchTerms[column.id] ? 'input-with-text' : ''}`}
                         ref={el => (inputRefs.current[column.id] = el)}
                     />
                 ),
@@ -74,13 +74,13 @@ function EditTabel({ onSaveClick }) {
 
     return (
         <>
-        <div className='flex justify-end pb-4 ' onClick={onSaveClick}>
-                    <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
-                        Save
-                    </button>
-                </div>
+            <div className='flex justify-end pb-4 ' onClick={onSaveClick}>
+                <button className='px-4 py-2 bg-[#22c55e] text-white rounded-lg'>
+                    Save
+                </button>
+            </div>
             <div className='overflow-y-auto  overflow-x-auto'>
-                
+
                 <div className="  shadow-md sm:rounded-lg w-full h-[600px]">
                     <table {...getTableProps()} className="w-full text-sm text-left rtl:text-right bg-[#555] text-white ">
                         <thead className="text-xs text-white  bg-[#2c2c2c] sticky top-0">
@@ -137,12 +137,12 @@ function EditTabel({ onSaveClick }) {
                         </tbody>
 
 
-                        
+
                     </table>
                 </div>
-               
 
-               
+
+
             </div>
         </>
     );

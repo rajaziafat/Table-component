@@ -19,7 +19,7 @@
 }
 
 /* Enable custom scrollbar on mobile */
-@media (max-width: 767px) {
+@media (max-width: 2560px) {
   /* WebKit (Chrome, Safari, etc.) */
   ::-webkit-scrollbar {
     width: 0em;
@@ -36,4 +36,14 @@
     outline: 1px solid slategrey;
     border-radius: 30px;
   }
+}
+
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  width: 10px;
+  background-image: url('https://flaticons.net/icon.php?slug_category=mobile-application&slug_icon=close');
+  background-size: 10px 10px;
+  color: #fff !important;
 }
